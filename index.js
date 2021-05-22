@@ -10,10 +10,9 @@ mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 
-
 app.use(cors())
 app.use(express.json());
-// establish connection wiht db
+// establish connection with db
 connectDatabase()
 
 app.get('/', (req, res) => {
