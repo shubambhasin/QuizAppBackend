@@ -25,6 +25,17 @@ router.route('/startup-quiz')
 
   }
 })
+router.route('/tech-quiz')
+.get( async( req, res) => {
+  try {
+    const quiz = await QuizModel.findById("60ab99deec402500285881df")
+    res.send({quiz})
+  } catch(error) {
+
+    res.send("error occured")
+
+  }
+})
 
 
 router.route('/')
