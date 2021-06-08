@@ -1,9 +1,10 @@
 const express = require('express')
 const router = express.Router()
 const {QuizModel} = require('../Models/quizModel')
+const authenticateRoutes = require('../middlewares/authenticateRoutes')
 
 router.route('/founders-quiz')
-.get( async ( req, res) => {
+.get( authenticateRoutes,  async ( req, res) => {
     try{
         const quiz = await QuizModel.findById("60a7eda0bef5cc0023fd117d")
         res.send({quiz})
@@ -15,7 +16,7 @@ router.route('/founders-quiz')
       }
 })
 router.route('/startup-quiz')
-.get( async( req, res) => {
+.get(  authenticateRoutes, async( req, res) => {
   try {
     const quiz = await QuizModel.findById("60aa6933e627db010ed58f82")
     res.send({quiz})
@@ -26,7 +27,7 @@ router.route('/startup-quiz')
   }
 })
 router.route('/tech-quiz')
-.get( async( req, res) => {
+.get( authenticateRoutes, async( req, res) => {
   try {
     const quiz = await QuizModel.findById("60ab99deec402500285881df")
     res.send({quiz})
